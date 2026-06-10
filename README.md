@@ -2,7 +2,7 @@
 
 ---
 
-## Aim
+## Aim:
 
 To write a Python program using OpenCV to perform histogram equalization on both grayscale and color images to enhance image contrast and brightness.
 
@@ -20,7 +20,7 @@ The program performs the following operations:
 
 ---
 
-## Software Used
+## Software Used:
 
 - Anaconda – Python 3.7  
 - Jupyter Notebook / VS Code  
@@ -30,7 +30,7 @@ The program performs the following operations:
 
 ---
 
-## Algorithm
+## Algorithm:
 
 ### Step 1:
 Import the required libraries: OpenCV, NumPy, and Matplotlib.
@@ -67,34 +67,72 @@ Display original color image, histogram, enhanced image, and enhanced histogram 
 
 ---
 
-## Program
 
-### Developed By:
-**Name:** ____________________________  
+## Developed By:
+**Name:** Divya A
+**Register No:** 2305002007
 
-### Register No:
-____________________________  
+## Program:
+```python
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+img = cv2.imread('parrot.jpg',cv2.IMREAD_GRAYSCALE)
+plt.imshow(img, cmap='gray')
+plt.title('original_image')
+plt.show()
+```
+```python
+plt.hist(img.ravel(),256,range = [0, 256]);
+plt.title('Original Image')
+plt.show()
+```
+```python
+img_eq = cv2.equalizeHist(img)
+plt.hist(img_eq.ravel(), 256, range = [0, 256]); 
+plt.title('Equalized Histogram')
+```
+```python
+plt.imshow(img_eq, cmap='gray')
+plt.title('original image')
+plt.show()
+```
+```python
+img = cv2.imread('parrot.jpg', cv2.IMREAD_COLOR)
+img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+img_hsv[:,:,2] = cv2.equalizeHist(img_hsv[:, :, 2])
+img_eq = cv2.cvtColor(img_hsv, cv2.COLOR_HSV2BGR)
+plt.subplot(121); plt.imshow(img[:, :, ::-1]); plt.title('Original Color Image')
+plt.subplot(122); plt.imshow(img_eq[:, :, ::-1]); plt.title('Equalized Image')
+```
+```python
+plt.figure(figsize = [12,10])
+plt.subplot(221); plt.imshow(img[:, :, ::-1]); plt.title('Original Color Image')
+plt.subplot(222); plt.imshow(img_eq[:, :, ::-1]); plt.title('Equalized Image')
+plt.subplot(223); plt.hist(img.ravel(),256,range = [0, 256]); plt.title('Original Image')
+plt.subplot(224); plt.hist(img_eq.ravel(),256,range = [0, 256]); plt.title('Histogram Equalized')
+```
+##  Output:
 
----
+### ORIGINAL IMAGE:
+<img width="786" height="492" alt="image" src="https://github.com/user-attachments/assets/1e5a8475-714f-4751-a689-8cdd99baad1e" />
 
-##  Output
+<img width="839" height="545" alt="image" src="https://github.com/user-attachments/assets/826e4b36-a591-4f65-8130-21d2cec76059" />
 
-### Grayscale Histogram Equalization
 
-- Original grayscale image is displayed  
-- Histogram of original grayscale image is plotted  
-- Enhanced image after histogram equalization is displayed  
-- Histogram of enhanced grayscale image shows improved contrast  
+### Equalised Histogram:
 
-### Color Image Histogram Equalization
+<img width="873" height="548" alt="image" src="https://github.com/user-attachments/assets/4126ae0f-55dd-4658-9ba2-20dec279d6dc" />
 
-- Original color image is displayed  
-- Histogram of B, G, R channels is plotted  
-- Enhanced image after HSV-based equalization is displayed  
-- Histogram of enhanced image shows better intensity distribution  
+<img width="962" height="511" alt="image" src="https://github.com/user-attachments/assets/b910bbe6-d4e3-4887-b2c0-04fa2a8ae9af" />
 
----
+### Histogram of Grayscale Image and any channel of Color Image:
+<img width="787" height="272" alt="image" src="https://github.com/user-attachments/assets/1b97f53a-e1da-44c2-b285-6c897b340f50" />
 
-## Result
+### Histogram Equalization of Grayscale Image:
+<img width="1106" height="808" alt="image" src="https://github.com/user-attachments/assets/ce8724cd-9545-4578-8019-fe4337c14e7b" />
+
+
+## Result:
 
 Thus, histogram equalization is successfully performed on both grayscale and color images using OpenCV. The contrast and brightness of the images are significantly improved, enhancing visual quality and feature visibility.
