@@ -70,6 +70,7 @@ Display original color image, histogram, enhanced image, and enhanced histogram 
 
 ## Developed By:
 **Name:** sk balaji
+
 **Register No:** 2305003001
 
 ## Program:
